@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #firstLabel {
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Number Game</h1>
+    <form>
+        <div>
+            <label id="firstLabel" for="choiceInput">Generate a number between 0 and</label>
+            <input max="10" id="choiceInput" type="number">
+        </div>
+        <div>
+            <label for="gameInput">Guess the number</label>
+            <input id="gameInput" type="number">
+            <button type="submit" id="playBtn">전송</button>
+        </div>
+    </form>
+    <p class="hidden" id="infomation">You chose : <span id="choiceNumber">17</span>, the machine chose : <span id="machineNumber">35</span></p>
+    <h2 id="resultMessage" class="hidden">You lost!</h2>
+    
+    <script>
+        const userNumber = document.querySelector('#choiceInput')
+        const gameNumber = document.querySelector('#gameInput')
+        const playBtn = document.querySelector('#playBtn')
+        const info = document.querySelector('#infomation')
+        const result = document.querySelector('#resultMessage')
+        
+
+        function handleSubmitBtn(e) {
+            e.preventDefault()
+            
+            const random = Math.ceil(Number(userNumber.value) * Math.random())
+            const GameNum = Number(gameNumber.value)
+            const userNum = Number(userNumber.value)
+            
+            if (GameNum && userNum) {
+                info.classList.remove('hidden')
+                result.classList.remove('hidden')
+                info.querySelector('span:first-child').innerText = GameNum
+                info.querySelector('span:last-child').innerText = random
+            
+                if (GameNum === random) {
+                    result.innerText = 'You won'
+                } else {
+                    result.innerText = 'You Lost'
+                }
+            } else {
+                alert('값을 모두 입력하세요')
+            }
+        }
+
+        playBtn.addEventListener('click', handleSubmitBtn)
+    </script>
+</body>
+</html>
