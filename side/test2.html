@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Time Until Christmas</h1>
+
+    <h2 id="clock"></h2>
+
+    <script>
+
+        const clock = document.querySelector('#clock');
+
+        function clockTime() {
+            const xmasDay = new Date(`${new Date().getFullYear()}-12-25:00:00:00+0900`);
+            const now = new Date();
+            // This is in milisecondsx
+            const difference = new Date(xmasDay - now);
+            
+
+            const secondsInMs = Math.floor(difference / 1000);
+            const minutesInMs = Math.floor(secondsInMs / 60);
+            const hoursInMs = Math.floor(minutesInMs / 60);
+
+        
+            console.log(secondsInMs + '초 남음')
+            console.log(minutesInMs + '분 남음')
+            console.log(hoursInMs + '시간 남음')
+
+
+            
+            const days = Math.floor(hoursInMs / 24);
+            const seconds = secondsInMs % 60;
+            const minutes = minutesInMs % 60;
+            const hours = hoursInMs % 24;
+
+            console.log(days + '일 남음')
+            console.log(seconds + '초')
+            console.log(minutes + '분')
+            console.log(hours + '시간')
+        
+            
+            const daysStr = `${String(days).padStart(2, "0")}일`;
+            const hoursStr = `${hours < 10 ? `0${hours}` : hours}시간`;
+            const minutesStr = `${minutes < 10 ? `0${minutes}` : minutes}m `;
+            const secondsStr = `${seconds < 10 ? `0${seconds}` : seconds}s`;
+
+            
+            clock.innerText = `${daysStr} ${hoursStr} ${minutesStr} ${secondsStr}`;
+        }    
+        clockTime()
+        setInterval(clockTime, 1000)
+
+    </script>
+</body>
+</html>
