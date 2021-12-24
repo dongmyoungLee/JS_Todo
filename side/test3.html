@@ -20,7 +20,6 @@
         button {
             font-size: 20px;
         }
-
     </style>
 </head>
 
@@ -47,23 +46,31 @@
             "#ffd32a",
             "#ff3f34"
         ];
+        // Math.random = 0 ~ 1 사이의 랜덤한 수
+        // Math.floor = 내림 함수
 
-        const btn = document.querySelector('button')
+        const Btn = document.querySelector('button')
         const body = document.querySelector('body')
+    
+        // css 에서 가능한 것
+
+        // background : linear-gradient('색깔1', '색깔2')
 
         function changeColor() {
-            const randomColor1 = colors[Math.floor(Math.random() * colors.length)]
+            const random1 = colors[Math.floor(Math.random() * colors.length)]
+            const random2 = colors[Math.floor(Math.random() * colors.length)]
 
-            const randomColor2 = colors[Math.floor(Math.random() * colors.length)]
+            body.style.background = `linear-gradient(${random1}, ${random2})`
 
-            if (randomColor1 !== randomColor2) {
-                body.style.background = `linear-gradient(${randomColor1}, ${randomColor2})`
-            } else {
-                body.style.background = `linear-gradient(#ffd32a, #ff3f34)`
+            if (random1 === random2) {
+                return changeColor()
             }
         }
 
-        btn.addEventListener('click', changeColor)
+        Btn.addEventListener('click', changeColor)
+
+        // 누를때마다 랜덤한 색깔이 나오게 해주세요
+
     </script>
 </body>
 

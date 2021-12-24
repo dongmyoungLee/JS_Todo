@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="clock"></h1>
+    <script>
+
+        const clock = document.getElementById('clock')
+        // padStart(2, '0')
+        function hello() {
+            const Time = new Date()
+            const hours = String(Time.getHours()).padStart(2, '0')
+            const minute = String(Time.getMinutes()).padStart(2, '0')
+            const second = String(Time.getSeconds()).padStart(2, '0')
+
+            clock.innerText = `${hours} : ${minute} : ${second}`
+        }
+        function hello2() {
+            console.log('hello')
+        }
+
+        hello()
+        setInterval(hello, 1000)// 1초마다 반복
+        setTimeout(hello2, 5000)// 5초후에 1번실행
+        
+
+    </script>
+</body>
+
+</html>
