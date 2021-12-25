@@ -13,11 +13,13 @@ function saveToDos() {
 function deleteTodo(e) {
     const li = e.target.parentElement
     li.remove()
-
+    toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id))
+    saveToDos()
 }
 
 function paintToDo(newTodo) {
     const li = document.createElement('li')
+    li.id = newTodo.id
     const span = document.createElement('span')
     span.innerText = newTodo.text
     const button = document.createElement('button')
@@ -44,7 +46,6 @@ function handleToDoSubmit(e) {
 toDoForm.addEventListener('submit', handleToDoSubmit)
 
 const savedToDos = localStorage.getItem(TODOS_KEY)
-console.log(savedToDos)
 
 if (savedToDos !== null) {
     const parseToDos = JSON.parse(savedToDos)
