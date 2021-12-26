@@ -10,7 +10,7 @@ function onLoginSubmit(e) {
     loginForm.classList.add(HIDEEN_CLASSNAME)
     const username = loginInput.value;
     localStorage.setItem(USERNAME_KEY, username)
-    greeting.innerText = `Hello ${username}`
+    greeting.innerText = `안녕하세요 ${username} 님`
     greeting.classList.remove(HIDEEN_CLASSNAME)
 }
 
